@@ -24,8 +24,23 @@ function reducer(state = initialState, action) {
             }
         }
         case(actionTypes.REMOVE_ONE_FROM_CART): {
-            console.log("removed " + action.item.name)
-            return state
+            let cartSnap = {...state.shoppingCart}
+            if (cartSnap[action.item.name] > 0) {
+                cartSnap[action.item.name] = cartSnap[action.item.name] - 1
+            }
+            // removes the item key from the cartSnap object if quantity is 0
+            if (cartSnap[action.item.name] == 0) {
+                delete cartSnap[action.item.name]
+            }
+            let price = state.totalPrice - parseInt(action.item.price)
+            
+            return {
+                ...state,
+                shoppingCart: {
+                    ...cartSnap
+                },
+                totalPrice: price
+            }
         }
     default:
         return state

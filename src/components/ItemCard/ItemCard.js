@@ -11,7 +11,23 @@ import { connect } from "react-redux";
 
 const ItemCard = (props) => {
     let itemObject = {name: props.itemName, price: props.itemPrice}      
-          
+    let itemCurrentQuantity = props.shopCart[props.itemName] || 0
+    let shoppingActions = <Button variant="success"
+                        onClick={() => props.itemAdded(itemObject)}>Add to cart</Button>
+                        
+    if (itemCurrentQuantity > 0) {
+      shoppingActions = (
+        <div>
+          <Button variant="secondary"
+            onClick={() => props.itemRemoved(itemObject)}>-</Button>
+            <span className="ml-2 mr-2">{itemCurrentQuantity}</span>
+          <Button variant="success"
+              onClick={() => props.itemAdded(itemObject)}
+              >+</Button>
+        </div>
+      )
+    } 
+    
     return (
         <Col md={{span: 4}}>
             <Card className="mt-3">
@@ -23,9 +39,7 @@ const ItemCard = (props) => {
                   the card's content.
                 </Card.Text>
                 
-                <Button variant="success"
-                        onClick={() => props.itemAdded(itemObject)}        
-                >Add to cart</Button>
+                {shoppingActions}
               </Card.Body>
             </Card>
         </Col>
