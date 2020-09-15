@@ -7,7 +7,10 @@ import Button from "react-bootstrap/Button";
 
 import ItemCard from "components/ItemCard/ItemCard";
 
-import IMG_SRCS from "pages/Shop/Images"
+import IMG_SRCS from "pages/Shop/Images";
+
+import * as actions from "store/actions/actions";
+import { connect } from "react-redux";
 
 const Shop = (props) => {
     return (
@@ -22,36 +25,36 @@ const Shop = (props) => {
                 <Row>
                     <ItemCard 
                         itemName="Sketchpad"
+                        itemPrice="18"
                         imgSrc={IMG_SRCS.sketchpad}
-                        price="18"
                      />
                     <ItemCard 
                         itemName="Pencil"
+                        itemPrice="2"
                         imgSrc={IMG_SRCS.pencil}
-                        price="2"
                     />
                     <ItemCard
                         itemName="Pencil Box Set"
+                        itemPrice="399"
                         imgSrc={IMG_SRCS.pencilBoxSet}
-                        price="399"
                     />
                 </Row>
                 
                 <Row>
                     <ItemCard 
                         itemName="Electric Eraser"
+                        itemPrice="9"
                         imgSrc={IMG_SRCS.eraser}
-                        price="9"
                     />
                     <ItemCard 
                         itemName="Manikin"
+                        itemPrice="199"
                         imgSrc={IMG_SRCS.manikins}
-                        price="199"
                     />
                     <ItemCard
                         itemName="Vintage Sharpener"
+                        itemPrice="75"
                         imgSrc={IMG_SRCS.sharpener} 
-                        price="75"
                     />
                 </Row>
             </div>
@@ -60,4 +63,18 @@ const Shop = (props) => {
 }
 
 
-export default Shop;
+const mapStateToProps = (state) => {
+    return {
+        shopCart: state.shoppingCart,
+        total: state.totalPrice
+    }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         itemAdded: (item) => dispatch(actions.addOneToCart(item)),
+//         itemRemoved: (item) => dispatch(actions.removeOneFromCart(item))
+//     }
+// }
+
+export default connect(mapStateToProps)(Shop);
