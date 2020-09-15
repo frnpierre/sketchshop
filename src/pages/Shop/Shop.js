@@ -21,7 +21,7 @@ const Shop = (props) => {
                 <h4>Get all your drawing suplies !</h4>
                 
 {/* The shop items are hardcoded for now. 
-    I realise we should Programmatically generate them.*/}
+    I realise they should be programmatically generated. */}
                 <Row>
                     <ItemCard 
                         itemName="Sketchpad"
