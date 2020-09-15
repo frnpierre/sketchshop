@@ -44,26 +44,41 @@ const Checkout = (props) => {
     return (
         <Container>
             <div className="mt-4">
-                <h1>Checkout</h1>
+                <h1 align="center">Checkout</h1>
                 
                 <h3 align="center">Your shopping cart</h3>
-                <Table striped hover>
-                    <thead>
-                        <tr>
-                          <th>Item</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                     {shoppingList}
-                    </tbody>
-                </Table>
-                <div className="float-right">
-                    <Button variant="secondary">Continue Shopping</Button>
-                    <Button variant="success" className="ml-2">Confirm</Button>
-                </div>
+                
+                <Row>
+                    <Table striped hover>
+                        <thead>
+                            <tr>
+                              <th>Item</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                         {shoppingList}
+                        </tbody>
+                    </Table>
+
+                    <div className="ml-auto">
+                        <Button variant="secondary">Continue Shopping</Button>
+                        <Button variant="success" className="ml-2">Confirm</Button>
+                    </div>
+                </Row>
+                
+                <h3 align="center" className="mt-4">Your Delivery Information</h3>
+                <Button variant="success" >Generate</Button>
+                <Row>
+                    <div className="mt-3">
+                        <form>
+                            <input type="text" />
+                        </form>
+                    </div>
+                </Row>
+                
             </div>
         </Container>
     )
