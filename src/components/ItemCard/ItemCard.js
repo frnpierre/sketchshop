@@ -10,7 +10,7 @@ import * as actions from "store/actions/actions"
 import { connect } from "react-redux";
 
 const ItemCard = (props) => {
-    let itemObject = {name: props.itemName, price: props.price}      
+    let itemObject = {name: props.itemName, price: props.itemPrice}      
           
     return (
         <Col md={{span: 4}}>
