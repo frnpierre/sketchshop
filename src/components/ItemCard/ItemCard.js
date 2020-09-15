@@ -12,21 +12,24 @@ import { connect } from "react-redux";
 const ItemCard = (props) => {
     let itemObject = {name: props.itemName, price: props.itemPrice}      
     let itemCurrentQuantity = props.shopCart[props.itemName] || 0
+    
+    // Generate the correct shopping actions based on quantity present in cart
     let shoppingActions = <Button variant="success"
                         onClick={() => props.itemAdded(itemObject)}>Add to cart</Button>
                         
     if (itemCurrentQuantity > 0) {
-      shoppingActions = (
+    shoppingActions = (
         <div>
-          <Button variant="secondary"
-            onClick={() => props.itemRemoved(itemObject)}>-</Button>
+            <Button variant="secondary"
+                    onClick={() => props.itemRemoved(itemObject)}>-</Button>
             <span className="ml-2 mr-2">{itemCurrentQuantity}</span>
-          <Button variant="success"
-              onClick={() => props.itemAdded(itemObject)}
-              >+</Button>
+            <Button variant="success"
+                    onClick={() => props.itemAdded(itemObject)}
+            >+</Button>
         </div>
-      )
-    } 
+    )
+} 
+    
     
     return (
         <Col md={{span: 4}}>
