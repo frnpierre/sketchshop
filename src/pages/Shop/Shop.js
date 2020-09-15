@@ -5,9 +5,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import ItemCard from "../../components/ItemCard/ItemCard";
+import ItemCard from "components/ItemCard/ItemCard";
 
-import IMG_SRCS from "./Images"
+import IMG_SRCS from "pages/Shop/Images"
 
 const Shop = (props) => {
     return (
