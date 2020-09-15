@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 import ItemCard from "components/ItemCard/ItemCard";
 
-import IMG_SRCS from "pages/Shop/Images";
+import ITEMS from "pages/Shop/Items";
 
 import * as actions from "store/actions/actions";
 import { connect } from "react-redux";
@@ -25,36 +25,36 @@ const Shop = (props) => {
                 <Row>
                     <ItemCard 
                         itemName="Sketchpad"
-                        itemPrice="18"
-                        imgSrc={IMG_SRCS.sketchpad}
+                        itemPrice={ITEMS["Sketchpad"].price}
+                        imgSrc={ITEMS["Sketchpad"].src}
                      />
                     <ItemCard 
                         itemName="Pencil"
-                        itemPrice="2"
-                        imgSrc={IMG_SRCS.pencil}
+                        itemPrice={ITEMS["Pencil"].price}
+                        imgSrc={ITEMS["Pencil"].src}
                     />
                     <ItemCard
                         itemName="Pencil Box Set"
-                        itemPrice="399"
-                        imgSrc={IMG_SRCS.pencilBoxSet}
+                        itemPrice={ITEMS["Pencil Box Set"].price}
+                        imgSrc={ITEMS["Pencil Box Set"].src}
                     />
                 </Row>
                 
                 <Row>
                     <ItemCard 
                         itemName="Electric Eraser"
-                        itemPrice="9"
-                        imgSrc={IMG_SRCS.eraser}
+                        itemPrice={ITEMS["Electric Eraser"].price}
+                        imgSrc={ITEMS["Electric Eraser"].src}
                     />
                     <ItemCard 
                         itemName="Manikin"
-                        itemPrice="199"
-                        imgSrc={IMG_SRCS.manikins}
+                        itemPrice={ITEMS["Manikin"].price}
+                        imgSrc={ITEMS["Manikin"].src}
                     />
                     <ItemCard
                         itemName="Vintage Sharpener"
-                        itemPrice="75"
-                        imgSrc={IMG_SRCS.sharpener} 
+                        itemPrice={ITEMS["Vintage Sharpener"].price}
+                        imgSrc={ITEMS["Vintage Sharpener"].src} 
                     />
                 </Row>
             </div>
