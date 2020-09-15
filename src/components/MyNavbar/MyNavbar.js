@@ -10,10 +10,10 @@ const MyNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link path="/">Home</Nav.Link>
-              <Nav.Link path="/shop">Shop</Nav.Link>
-              <Nav.Link path="/checkout">Checkout</Nav.Link>
-              <Nav.Link path="/admin">Admin</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/shop">Shop</Nav.Link>
+              <Nav.Link href="/checkout">Checkout</Nav.Link>
+              <Nav.Link href="/admin">Admin</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
