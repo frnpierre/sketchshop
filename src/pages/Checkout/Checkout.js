@@ -44,9 +44,12 @@ const Checkout = (props) => {
     }
     
     const generateDelivery = () => {
-        console.log("generation")
+        console.log("generate delivery")
     }
     
+    const confirmPayment = () => {
+        console.log("confirm payment")
+    }
     return (
         <Container>
             <div className="mt-4">
@@ -106,7 +109,6 @@ const Checkout = (props) => {
                              return errors;
                            }}
                            onSubmit={(values, { setSubmitting }) => {
-                             console.log(values)
                              setTimeout(() => {
                                alert(JSON.stringify(values, null, 2));
                                setSubmitting(false);
@@ -159,6 +161,30 @@ const Checkout = (props) => {
                       </div>
                 </Row>
                 
+                
+                <Row>
+                    <div className="col-6 mt-3 ml-auto mr-auto">
+                        <h4>
+                            Since we sell products for your imagination, we believe
+                            our profits should be imaginary too !
+                        </h4>
+                        <p>wait, what?</p>
+                        
+                        <Form align="center" >
+                            <Form.Group controlId="paymentCheckbox" >
+                                <Form.Check type="checkbox" 
+                                            label="I'll pay later !"
+                                            checked 
+                                            disabled
+                                />
+                            </Form.Group>
+                        </Form>
+                        
+                        <Button variant="success" 
+                                className="btn-block"
+                                onClick={confirmPayment}>Confirm</Button>
+                      </div>
+                </Row>
             </div>
         </Container>
     )
