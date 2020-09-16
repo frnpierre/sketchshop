@@ -5,11 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import Form from "react-bootstrap/Form";
 
 import PRICES from "pages/Shop/Prices"
 import ITEMS from "pages/Shop/Items";
 
 import { connect } from "react-redux";
+import { Formik } from "formik";
 
 // Of course in a production ready application, the prices should be checked 
 // serverside to avoid malicious input.
@@ -17,7 +19,7 @@ import { connect } from "react-redux";
 const Checkout = (props) => {
     
     let snapCart = {...props.shopCart}
-    let shoppingList = <td>you don't have any items in your cart, go to the shop !</td>
+    let shoppingList = <tr><td>you don't have any items in your cart, go to the shop !</td></tr>
     let itemsArray = [];
     
     // Generate a table row for each item in the shopping cart
@@ -39,6 +41,10 @@ const Checkout = (props) => {
                        </tr>)
         
         shoppingList = itemsArray
+    }
+    
+    const generateDelivery = () => {
+        console.log("generation")
     }
     
     return (
@@ -69,14 +75,88 @@ const Checkout = (props) => {
                     </div>
                 </Row>
                 
-                <h3 align="center" className="mt-4">Your Delivery Information</h3>
-                <Button variant="success" >Generate</Button>
+                <h3 align="center" className="mt-4">
+                    Your Delivery Information
+                    <Button variant="success" className="ml-2" onClick={generateDelivery} >
+                        Generate
+                    </Button>
+                </h3>
+                
                 <Row>
-                    <div className="mt-3">
-                        <form>
-                            <input type="text" />
-                        </form>
-                    </div>
+                    <div className="mt-3 ml-auto mr-auto">
+                        <Formik
+                           initialValues={{ name: "", street: "", city: ""}}
+                           validate={values => {
+                             const errors = {};
+                             
+                             
+                            /* Basic validation of presence, of course in production it should be
+                               more robust than this */
+                               
+                             if (!values.name) {
+                                 errors.name = "Please enter your name"
+                             }
+                             if (!values.street) {
+                                 errors.street = "Please enter your street"
+                             } 
+                             if (!values.city) {
+                                 errors.city = "Please enter your city"
+                             }
+                             
+                             return errors;
+                           }}
+                           onSubmit={(values, { setSubmitting }) => {
+                             console.log(values)
+                             setTimeout(() => {
+                               alert(JSON.stringify(values, null, 2));
+                               setSubmitting(false);
+                             }, 400);
+                           }}
+                         >
+                           {({
+                             values,
+                             errors,
+                             touched,
+                             handleChange,
+                             handleBlur,
+                             handleSubmit,
+                             isSubmitting
+                           }) => (
+                             <Form onSubmit={handleSubmit}>
+                                <Form.Group controlId="formName">
+                                    <Form.Label>Name</Form.Label>
+                                    <Form.Control type="text" name="name" 
+                                                  onChange={handleChange}
+                                                  onBlur={handleBlur}
+                                    />
+                                    {errors.name && touched.name && errors.name}
+                                </Form.Group>
+                                
+                                <Form.Group controlId="formStreet">
+                                    <Form.Label>Street</Form.Label>
+                                    <Form.Control type="text" name="street" 
+                                                  onChange={handleChange}
+                                                  onBlur={handleBlur}
+                                    />
+                                    {errors.street && touched.street && errors.street}
+                                </Form.Group>
+                                
+                                <Form.Group controlId="formCity">
+                                    <Form.Label>City</Form.Label>
+                                    <Form.Control type="text" name="city" 
+                                                  onChange={handleChange}
+                                                  onBlur={handleBlur}
+                                    />
+                                    {errors.city && touched.city && errors.city}
+                                </Form.Group>
+                             
+                                <Button variant="success" type="submit" disabled={isSubmitting} >
+                                    Confirm
+                                </Button>
+                             </Form>
+                           )}
+                         </Formik>
+                      </div>
                 </Row>
                 
             </div>

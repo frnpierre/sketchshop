@@ -8,11 +8,11 @@ const ITEMS = {
         price: 2,
     },
     "Pencil Box Set": {
-        src: "https://images0.greatart.co.uk/out/pictures/generated/500_500/pboxx-pixelboxx-1752409/Derwent+Battery+Operated+Eraser.jpg",
+        src: "https://images0.greatart.co.uk/out/pictures/generated/500_500/pboxx-pixelboxx-2356482/Caran+D%26%23039%3BAche+Pablo+Wooden+Box+Set.jpg",
         price: 399
     },
     "Electric Eraser": {
-        src: "https://images0.greatart.co.uk/out/pictures/generated/500_500/pboxx-pixelboxx-2356482/Caran+D%26%23039%3BAche+Pablo+Wooden+Box+Set.jpg",
+        src: "https://images0.greatart.co.uk/out/pictures/generated/500_500/pboxx-pixelboxx-1752409/Derwent+Battery+Operated+Eraser.jpg",
         price: 9,
     },
     "Manikin": {
