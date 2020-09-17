@@ -7,7 +7,9 @@ import Button from "react-bootstrap/Button";
 
 import CartButton from "components/CartButton/CartButton";
 import ItemCard from "components/ItemCard/ItemCard";
+import FlashAlert from "components/FlashAlert/FlashAlert";
 
+import { useLocation } from "react-router-dom";
 
 import ITEMS from "pages/Shop/Items";
 
@@ -15,9 +17,19 @@ import * as actions from "store/actions/actions";
 import { connect } from "react-redux";
 
 const Shop = (props) => {
+    const location = useLocation();
+    let flash = null;
+    if (location.state && location.state.flashMsg) {
+        flash = <FlashAlert show={true}
+                            flashType={location.state.flashType}
+                            flashMsg={location.state.flashMsg}
+                />
+    }
+
     return (
         <Container>
             <div className="mt-4">
+                {flash}
                 <h3 align="center">Shop</h3>
                 
                 <h4 align="center">Get all your drawing suplies !</h4>

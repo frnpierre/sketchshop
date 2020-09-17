@@ -84,11 +84,15 @@ const Checkout = (props) => {
             .then(response => {
                 console.log("axios post ok");
                 props.resetCart();
-                history.push("/shop");
+                history.push({
+                        pathname: "/shop",
+                        /* Setup a flash message */
+                        state: {flashType: "success",
+                                flashMsg: "Your order was saved to firebase and the cart was reset. You should go to the admin panel"}});
             }).catch(error => {
                 console.log("axios post problem: ");
                 console.log(error);
-                history.push("/home");
+                history.push("/shop", {flashType: "danger", flashMsg: "There was an error while trying to save your order. try again"});
             })
         
     }
