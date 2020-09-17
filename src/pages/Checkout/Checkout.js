@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -115,7 +115,9 @@ const Checkout = (props) => {
                     </Table>
 
                     <div className="ml-auto">
-                        <Button variant="secondary">Continue Shopping</Button>
+                        <Link to="/shop">
+                         <Button variant="secondary">Continue Shopping</Button>
+                        </Link>
                         <Button variant="success"
                                 className="ml-2"
                                 onClick={confirmCart}>Confirm</Button>

@@ -7,7 +7,7 @@ import { NavLink }  from "react-router-dom";
 const MyNavbar = () => {
     return (
         <Navbar className="navbar navbar-expand-lg navbar-dark bg-primary" bg="primary" expand="lg">
-          <Navbar.Brand href="#home">Sketch Shop</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">Sketch Shop</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

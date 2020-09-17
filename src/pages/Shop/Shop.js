@@ -5,7 +5,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+import CartButton from "components/CartButton/CartButton";
 import ItemCard from "components/ItemCard/ItemCard";
+
 
 import ITEMS from "pages/Shop/Items";
 
@@ -19,6 +21,10 @@ const Shop = (props) => {
                 <h3 align="center">Shop</h3>
                 
                 <h4 align="center">Get all your drawing suplies !</h4>
+                
+                <div align="center">
+                    <CartButton />
+                </div>
                 
 {/* The shop items are hardcoded for now. 
     I realise they should be programmatically generated. */}
