@@ -19,22 +19,22 @@ const ItemCard = (props) => {
                         
     if (itemCurrentQuantity > 0) {
     shoppingActions = (
-        <div>
+        <React.Fragment>
             <Button variant="secondary"
                     onClick={() => props.itemRemoved(itemObject)}>-</Button>
             <span className="ml-2 mr-2">{itemCurrentQuantity}</span>
             <Button variant="success"
                     onClick={() => props.itemAdded(itemObject)}
             >+</Button>
-        </div>
+        </React.Fragment>
     )
 } 
     
     
     return (
-        <Col md={{span: 4}}>
+        <Col md={{span: 4 }}>
             <Card className="mt-3">
-              <Card.Img variant="top" src={props.imgSrc} />
+              <Card.Img className="ml-auto mr-auto" variant="top" style={{width: "40%"}} src={props.imgSrc} />
               <Card.Body>
                 <Card.Title align="center">{props.itemName} : {props.itemPrice}$</Card.Title>
                 <Card.Text>
@@ -42,7 +42,9 @@ const ItemCard = (props) => {
                   the card's content.
                 </Card.Text>
                 
+                <div align="center">
                 {shoppingActions}
+                </div>
               </Card.Body>
             </Card>
         </Col>

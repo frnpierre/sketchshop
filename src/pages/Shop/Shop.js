@@ -16,9 +16,9 @@ const Shop = (props) => {
     return (
         <Container>
             <div className="mt-4">
-                <h3>Shop</h3>
+                <h3 align="center">Shop</h3>
                 
-                <h4>Get all your drawing suplies !</h4>
+                <h4 align="center">Get all your drawing suplies !</h4>
                 
 {/* The shop items are hardcoded for now. 
     I realise they should be programmatically generated. */}
