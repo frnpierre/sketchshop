@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -21,7 +21,7 @@ const Checkout = (props) => {
     let snapCart = {...props.shopCart}
     let shoppingList = <tr><td>you don't have any items in your cart, go to the shop !</td></tr>
     let itemsArray = [];
-    
+
     // Generate a table row for each item in the shopping cart
     for (let item in snapCart) {
         let priceXquantity = ITEMS[item].price * snapCart[item];
@@ -43,12 +43,24 @@ const Checkout = (props) => {
         shoppingList = itemsArray
     }
     
-    const generateDelivery = () => {
-        console.log("generate delivery")
-    }
+    // uses useRef to access the address formik field values (I could do it this way too:
+    // pass the values as an argument to the confirmPayment function, since I call it inside
+    //    the onSubmit of the formik form. )
+    let formRef = useRef(null)
     
+
+    // send an orderData object to firebase when you confirm the payment
+    let orderData = {}
     const confirmPayment = () => {
-        console.log("confirm payment")
+        orderData = {
+            cart: {...snapCart},
+            price: props.total,
+            address: {
+                name: formRef.current.values.name,
+                street: formRef.current.values.street,
+                city: formRef.current.values.city
+            }
+        }
     }
     return (
         <Container>
@@ -80,14 +92,12 @@ const Checkout = (props) => {
                 
                 <h3 align="center" className="mt-4">
                     Your Delivery Information
-                    <Button variant="success" className="ml-2" onClick={generateDelivery} >
-                        Generate
-                    </Button>
                 </h3>
                 
                 <Row>
                     <div className="mt-3 ml-auto mr-auto">
                         <Formik
+                           innerRef={formRef}
                            initialValues={{ name: "", street: "", city: ""}}
                            validate={values => {
                              const errors = {};
@@ -109,10 +119,13 @@ const Checkout = (props) => {
                              return errors;
                            }}
                            onSubmit={(values, { setSubmitting }) => {
-                             setTimeout(() => {
-                               alert(JSON.stringify(values, null, 2));
-                               setSubmitting(false);
-                             }, 400);
+                             confirmPayment();
+                             console.log(orderData);
+                             
+                            //  setTimeout(() => {
+                            //   alert(JSON.stringify(values, null, 2));
+                            //   setSubmitting(false);
+                            //  }, 400);
                            }}
                          >
                            {({
@@ -152,9 +165,42 @@ const Checkout = (props) => {
                                     {errors.city && touched.city && errors.city}
                                 </Form.Group>
                              
-                                <Button variant="success" type="submit" disabled={isSubmitting} >
-                                    Confirm
-                                </Button>
+                                <Button variant="success">Confirm</Button>
+                                
+                                <h3 align="center" className="mt-4">
+                                        Your Payment Information
+                                    </h3>
+                                <div className="col-md-6 mt-3 ml-auto mr-auto">
+                                    
+                                    
+                                    <h4 className="mt-4">
+                                        Since we sell products for your imagination, we believe
+                                        our profits should be imaginary too !
+                                    </h4>
+                                    <p>wait, what?</p>
+                                    
+                                    
+                                    <Form.Group align="center" controlId="paymentCheckbox" >
+                                        <Form.Check type="checkbox" 
+                                                    label="I'll pay later !"
+                                                    checked 
+                                                    disabled
+                                        />
+                                    </Form.Group>
+                                   
+                                    
+                                   {/* <Button variant="success" 
+                                            className="btn-block"
+                                            onClick={confirmPayment}>Confirm</Button> */}
+                                            
+                                    <Button variant="success" className="btn-block" type="submit" disabled={isSubmitting} >
+                                        Confirm
+                                    </Button>
+                                 </div>
+                                
+                                
+                                
+                                
                              </Form>
                            )}
                          </Formik>
@@ -162,7 +208,7 @@ const Checkout = (props) => {
                 </Row>
                 
                 
-                <Row>
+            { /*    <Row>
                     <div className="col-6 mt-3 ml-auto mr-auto">
                         <h4>
                             Since we sell products for your imagination, we believe
@@ -184,7 +230,7 @@ const Checkout = (props) => {
                                 className="btn-block"
                                 onClick={confirmPayment}>Confirm</Button>
                       </div>
-                </Row>
+                </Row> */}
             </div>
         </Container>
     )
