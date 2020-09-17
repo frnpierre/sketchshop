@@ -17,6 +17,8 @@ import ITEMS from "pages/Shop/Items";
 import { connect } from "react-redux";
 import { Formik } from "formik";
 
+import * as actions from "store/actions/actions";
+
 // Of course in a production ready application, the prices should be checked 
 // serverside to avoid malicious input.
 
@@ -81,6 +83,7 @@ const Checkout = (props) => {
         axios.post("https://sketchshop-portfolio.firebaseio.com/orders.json", orderData)
             .then(response => {
                 console.log("axios post ok");
+                props.resetCart();
                 history.push("/shop");
             }).catch(error => {
                 console.log("axios post problem: ");
@@ -254,4 +257,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        resetCart: () => dispatch(actions.resetCart())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

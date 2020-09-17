@@ -13,3 +13,9 @@ export const removeOneFromCart = (item) => {
         item: item
     }
 }
+
+export const resetCart = () => {
+    return {
+        type: actionTypes.RESET_CART
+    }
+}

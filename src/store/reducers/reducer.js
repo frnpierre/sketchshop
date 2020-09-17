@@ -42,8 +42,11 @@ function reducer(state = initialState, action) {
                 totalPrice: price
             }
         }
-    default:
-        return state
+        case(actionTypes.RESET_CART): {
+            return {...initialState}
+        }
+        default:
+            return state
     }
 } 
 
