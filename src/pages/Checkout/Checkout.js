@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
+import { useHistory } from "react-router-dom";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -19,11 +21,10 @@ import { Formik } from "formik";
 // serverside to avoid malicious input.
 
 const Checkout = (props) => {
-    // UI state management with useState to show different checkout steps
+    // UI state management with the useState hook to manage checkout steps visual
     const [showCart, setShowCart] = useState(true)
     const [showDelivery, setShowDelivery] = useState(false)
     const [showPayment, setShowPayment] = useState(false);
-
     const displayClassName = (show) => {
         return show ? "" : "d-none"
     }
@@ -56,6 +57,7 @@ const Checkout = (props) => {
     let confirmCart = () => {
         setShowCart(false)
         setShowDelivery(true)
+        console.log(props.history)
     }
     
     
@@ -64,6 +66,8 @@ const Checkout = (props) => {
     
     // send an orderData object to firebase when you confirm the payment
     let orderData = {}
+    
+    let history = useHistory();
     const confirmPayment = () => {
         orderData = {
             cart: {...snapCart},
@@ -75,6 +79,15 @@ const Checkout = (props) => {
             }
         }
         axios.post("https://sketchshop-portfolio.firebaseio.com/orders.json", orderData)
+            .then(response => {
+                console.log("axios post ok");
+                history.push("/shop");
+            }).catch(error => {
+                console.log("axios post problem: ");
+                console.log(error);
+                history.push("/home");
+            })
+        
     }
     return (
         <Container>
