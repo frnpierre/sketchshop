@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import axios from "axios";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -73,8 +74,7 @@ const Checkout = (props) => {
                 city: formRef.current.values.city
             }
         }
-        console.log(orderData)
-        console.log("sending it to firebase..")
+        axios.post("https://sketchshop-portfolio.firebaseio.com/orders.json", orderData)
     }
     return (
         <Container>
@@ -82,7 +82,6 @@ const Checkout = (props) => {
                 <h1 align="center">Checkout</h1>
                 
                 <Row className={displayClassName(showCart)}>
-                
                     <h3 className="ml-auto mr-auto mt-3">Your shopping cart</h3>
                 
                     <Table striped hover>
