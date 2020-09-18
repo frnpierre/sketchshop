@@ -30,6 +30,7 @@ const Shop = (props) => {
                         key={item}
                         itemName={item}
                         itemPrice={ITEMS[item].price}
+                        itemDesc={ITEMS[item].desc}
                         imgSrc={ITEMS[item].src}
                      />);
     }

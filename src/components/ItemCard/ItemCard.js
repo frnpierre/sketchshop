@@ -35,8 +35,8 @@ const ItemCard = (props) => {
                 <Card.Img className="ml-auto mr-auto" variant="top" style={{width: "40%"}} src={props.imgSrc} />
                     <Card.Body>
                     <Card.Title align="center">{props.itemName} : {props.itemPrice}$</Card.Title>
-                    <Card.Text>Some quick example text to build on the card title and
-                                make up the bulk of the card's content.
+                    <Card.Text>
+                        {props.itemDesc}
                     </Card.Text>
                     
                     <div align="center">
