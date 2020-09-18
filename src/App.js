@@ -9,28 +9,27 @@ import Checkout from "pages/Checkout/Checkout"
 import Admin from "pages/Admin/Admin"
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <MyNavbar />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/shop">
-          <Shop />
-        </Route>
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-        <Route path="/admin">
-          <Admin />
-        </Route>
-      </Switch>
-      
-      </Router>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <MyNavbar />
+                <Switch>
+                    <Route path="/" exact>
+                        <Home />
+                    </Route>
+                    <Route path="/shop">
+                        <Shop />
+                    </Route>
+                    <Route path="/checkout">
+                        <Checkout />
+                    </Route>
+                    <Route path="/admin">
+                        <Admin />
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

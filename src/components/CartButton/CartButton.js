@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const CartButton = (props) => {
     
-    let cartSnap = {...props.shopCart}
-    let cartQty = 0
+    let cartSnap = {...props.shopCart};
+    let cartQty = 0;
     for (let item in cartSnap) {
-        cartQty += cartSnap[item]
+        cartQty += cartSnap[item];
     }
     
     return (
@@ -25,15 +25,15 @@ const CartButton = (props) => {
             </Button>
         </Link>
 
-    )
-}
+    );
+};
 
 
 const mapStateToProps = (state) => {
     return {
         shopCart: state.shoppingCart
-    }
-}
+    };
+};
 
 
 

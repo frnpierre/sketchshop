@@ -24,6 +24,6 @@ const ITEMS = {
         price: 75
     }
     
-}
+};
 
 export default ITEMS;

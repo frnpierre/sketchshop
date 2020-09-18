@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Alert from "react-bootstrap/Alert";
 
 const FlashAlert = (props) => {
-    const [show, setShow] = useState(props.show)    
+    const [show, setShow] = useState(props.show) ;   
     
     if (show) {
         return (
@@ -12,11 +12,9 @@ const FlashAlert = (props) => {
                     {props.flashMsg}
                 </p>
             </Alert>
-        )
+        );
     } 
-    return null
-    
-    
-}
+    return null;
+};
 
 export default FlashAlert;

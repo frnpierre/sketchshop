@@ -22,6 +22,7 @@ const Shop = (props) => {
                 />;
     }
 
+    // Generate items cards 
     let itemCards = [];
     for (let item in ITEMS) {
         itemCards.push(<ItemCard 
@@ -44,7 +45,6 @@ const Shop = (props) => {
                 <div align="center">
                     <CartButton />
                 </div>
-                
                 <Row>
                     {itemCards}
                 </Row>

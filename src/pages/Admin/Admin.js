@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 
 
 const Admin = (props) => {
-    const [orders, setOrders] = useState({})
+    const [orders, setOrders] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,9 +21,9 @@ const Admin = (props) => {
     for (let order in orders) {
         let cart = orders[order].cart;
         // generates the list of items to be inserted in the items table cell
-        let cartItems = []
+        let cartItems = [];
         for (let item in cart) {
-            cartItems.push(<li>{item}: x {cart[item]}</li>)
+            cartItems.push(<li>{item}: x {cart[item]}</li>);
         }
         // generates each row
         tableRows.push(<tr>
@@ -42,7 +39,7 @@ const Admin = (props) => {
                                 </ul>
                             </td>
                             <td>{orders[order].price} $</td>
-                       </tr>)
+                       </tr>);
         // reverse the array to get the last order in the first row
         tableRows.reverse();
     }
@@ -51,26 +48,24 @@ const Admin = (props) => {
         <Container>
             <div className="mt-4">
                 <h1 align="center">Admin</h1>
-                
-            <h4>Orders</h4>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Ship to</th>
-                        <th>Items</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableRows}
-                </tbody>
-            </Table>
-                
-                
+                    
+                <h4>Orders</h4>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Ship to</th>
+                            <th>Items</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableRows}
+                    </tbody>
+                </Table>
             </div>
         </Container>
-    )
-}
+    );
+};
 
 export default Admin;
