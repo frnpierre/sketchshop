@@ -27,8 +27,6 @@ const ItemCard = (props) => {
         </React.Fragment>
     );
 } 
-    
-    
     return (
         <Col md={{span: 4 }}>
             <Card className="mt-3">

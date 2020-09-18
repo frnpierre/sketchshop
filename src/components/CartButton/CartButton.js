@@ -28,13 +28,10 @@ const CartButton = (props) => {
     );
 };
 
-
 const mapStateToProps = (state) => {
     return {
         shopCart: state.shoppingCart
     };
 };
-
-
 
 export default connect(mapStateToProps)(CartButton);
