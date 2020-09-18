@@ -19,8 +19,6 @@ const Admin = (props) => {
         fetchData();
     }, []);
     
-    
-    console.log(orders);
     // generates table rows for each order    
     let tableRows = [];
     for (let order in orders) {
@@ -34,11 +32,9 @@ const Admin = (props) => {
         tableRows.push(<tr>
                            <td>{orders[order].date}</td>
                             <td>
-                                <ul>
-                                    <li>Name: {orders[order].address.name}</li>
-                                    <li>Street: {orders[order].address.street}</li>
-                                    <li>City: {orders[order].address.city}</li>
-                                </ul>
+                                Name: {orders[order].address.name}<br/>
+                                Street: {orders[order].address.street}<br/>
+                                City: {orders[order].address.city}
                             </td>
                             <td>
                                 <ul>

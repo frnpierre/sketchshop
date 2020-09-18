@@ -59,7 +59,6 @@ const Checkout = (props) => {
     let confirmCart = () => {
         setShowCart(false)
         setShowDelivery(true)
-        console.log(props.history)
     }
     
     
@@ -86,7 +85,6 @@ const Checkout = (props) => {
         }
         axios.post("https://sketchshop-portfolio.firebaseio.com/orders.json", orderData)
             .then(response => {
-                console.log("axios post ok");
                 props.resetCart();
                 history.push({
                         pathname: "/shop",
@@ -94,8 +92,6 @@ const Checkout = (props) => {
                         state: {flashType: "success",
                                 flashMsg: "Your order was saved to firebase and the cart was reset. You should go to the admin panel"}});
             }).catch(error => {
-                console.log("axios post problem: ");
-                console.log(error);
                 history.push("/shop", {flashType: "danger", flashMsg: "There was an error while trying to save your order. try again"});
             })
         
@@ -128,7 +124,9 @@ const Checkout = (props) => {
                         </Link>
                         <Button variant="success"
                                 className="ml-2"
-                                onClick={confirmCart}>Confirm</Button>
+                                onClick={confirmCart}
+                                // disables the confirm button if the cart is empty
+                                disabled={Object.keys(snapCart).length == 0}>Confirm</Button>
                     </div>
                 </Row>
                 
