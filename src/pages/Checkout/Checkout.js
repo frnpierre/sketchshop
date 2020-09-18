@@ -71,6 +71,9 @@ const Checkout = (props) => {
     
     let history = useHistory();
     const confirmPayment = () => {
+        let dateNow = new Date();
+        let dateOptions = { weekday: "long", year: "numeric", month: "long", day: "numeric"}
+        let dateFormatted = dateNow.toLocaleDateString("en-US", dateOptions)
         orderData = {
             cart: {...snapCart},
             price: props.total,
@@ -78,7 +81,8 @@ const Checkout = (props) => {
                 name: formRef.current.values.name,
                 street: formRef.current.values.street,
                 city: formRef.current.values.city
-            }
+            },
+            date: dateFormatted
         }
         axios.post("https://sketchshop-portfolio.firebaseio.com/orders.json", orderData)
             .then(response => {

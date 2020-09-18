@@ -32,7 +32,7 @@ const Admin = (props) => {
         }
         // generates each row
         tableRows.push(<tr>
-                           <td>15/08/2020</td>
+                           <td>{orders[order].date}</td>
                             <td>
                                 <ul>
                                     <li>Name: {orders[order].address.name}</li>
