@@ -36,7 +36,8 @@ const Checkout = (props) => {
     // Generate a table row for each item in the shopping cart
     for (let item in snapCart) {
         let priceXquantity = ITEMS[item].price * snapCart[item];
-        itemsArray.push(<tr>
+        // uses the name of the item as a key since it will be unique in this project.
+        itemsArray.push(<tr key={item}>
                             <td>{item}</td>
                             <td>{snapCart[item]}</td>
                             <td>{priceXquantity} $</td>
@@ -45,7 +46,7 @@ const Checkout = (props) => {
     
     // Adds the total price table row if the shopping cart has items in it.
     if (itemsArray.length > 0) {
-        itemsArray.push(<tr>
+        itemsArray.push(<tr key="totalRow">
                             <td></td>
                             <td align="right">Total</td>
                             <td>{props.total} $</td>

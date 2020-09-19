@@ -26,7 +26,7 @@ const Admin = (props) => {
             cartItems.push(<li>{item}: x {cart[item]}</li>);
         }
         // generates each row
-        tableRows.push(<tr>
+        tableRows.push(<tr key={order}>
                            <td>{orders[order].date}</td>
                             <td>
                                 Name: {orders[order].address.name}<br/>
