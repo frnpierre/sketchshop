@@ -2,6 +2,9 @@
 
 I chose to use different techniques throughout the app to show my understanding of the React framework.
 	example: state is managed locally and with redux, sometime with the hook useState.
+	
+You can play with a live version here: https://sketchshop.herokuapp.com/ 
+(It's hosted a heroku free dyno so it might take a few seconds to start)
 
 ### How I built it:
 
