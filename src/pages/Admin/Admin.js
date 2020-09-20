@@ -23,7 +23,7 @@ const Admin = (props) => {
         // generates the list of items to be inserted in the items table cell
         let cartItems = [];
         for (let item in cart) {
-            cartItems.push(<li>{item}: x {cart[item]}</li>);
+            cartItems.push(<li key={item}>{item}: x {cart[item]}</li>);
         }
         // generates each row
         tableRows.push(<tr key={order}>
